@@ -1,0 +1,42 @@
+<?php
+class WeixinAction extends CommonAction {
+	/*
+		kaoder    采集器
+		version   1.0
+		author    littlebear
+		date      2013/11/19
+		func      根据文章来源url获取文章标题和内容 
+	*/
+	public $snoopy;
+	const TYPE_TITLE = 0;
+	const TYPE_CONTENT = 1;
+
+	function __construct() {
+		parent::__construct();
+		//伪装
+		$this->snoopy=new Snoopy();
+		$this->snoopy->agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11"; //伪装浏览器  
+		$this->snoopy->rawheaders["Pragma"] = "no-cache";	 //cache 的http头信息  
+		//$this->snoopy->rawheaders["X_FORWARDED_FOR"] = "222.28.40.101"; //伪装ip  
+		$this->snoopy->rawheaders["X-Requested-With"] = "XMLHttpRequest"; //伪装AJAX
+		$this->snoopy->rawheaders["Accept"] = "*/*; q=0.01"; //伪装AJAX
+		//$this->snoopy->rawheaders["Cookie"] = "JSESSIONID=C30C576FF8B75E962644997ECFC25D12;"; //伪装AJAX
+		//$this->snoopy->rawheaders["Referer"] = "http://www.simsimi.com/talk.htm?lc=ch";
+	}
+
+	//解析URL主页 http://localhost/kd/?m=weixin
+	public function index(){
+		$this->display('Tpl/wx/index.html');
+	}
+
+	//获取openId
+	public function openid(){
+		echo "获取微信openid";
+	}
+
+	//获取articles
+	//这里需要保存：微信号，容文章标题，内容简介，内容
+	public function article(){
+		echo "获取微信artile";
+	}
+}

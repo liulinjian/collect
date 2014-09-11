@@ -1,0 +1,171 @@
+<?php
+class WeixinAction extends CommonAction {
+	/*
+		kaoder    采集器
+		version   1.0
+		author    littlebear
+		date      2013/11/19
+		func      根据文章来源url获取文章标题和内容 
+	*/
+
+	function __construct() {
+		parent::__construct();
+	}
+
+	//解析URL主页 http://localhost/kd/?m=weixin
+	public function index(){
+		$this->display('Tpl/wx/index.html');
+	}
+
+	//获取openId
+	public function openId(){
+		$wxname = trim( $_REQUEST['wxname'] );
+		$wxname = iconv('UTF-8', 'GBK//IGNORE', $wxname);
+		$wxid = trim( $_REQUEST['wxid'] );
+		$page = 1;
+
+		$url = "http://weixin.sogou.com/weixin?type=1&query=".$wxname."&page=".$page;
+		
+		$html = file_get_html( $url );
+
+		$results = $html->find('div.results a');
+		$wxhs = $html->find('div.txt-box h4');
+
+		if (!preg_match('/resnum/i', $html)) {
+			echo '';
+			exit();
+		}
+		$totalNum = intval($html->find('resnum#scd_num', 0)->innertext);
+		$pageCount = ceil( $totalNum / 10 );
+
+
+		$openid = '';
+		for ($i=1; $i <= $pageCount; $i++) {
+
+			for ($j=0; $j < count($wxhs); $j++) { 
+				$wxhs[$j] = strip_tags($wxhs[$j]);
+				$wxhs[$j] = substr($wxhs[$j], 13);
+				$wxhs[$j] = trim($wxhs[$j]);
+				
+				if ($wxid == $wxhs[$j]) {
+					$openid = substr($results[$j]->getAttribute('href'), 12);
+					break;
+				}
+			}
+			if (!$openid && $i!=$pageCount) {
+				$html = file_get_html("http://weixin.sogou.com/weixin?type=1&query=".$wxname."&page=".($i+1));
+
+				$results = $html->find('div.results a');
+				$wxhs = $html->find('div.txt-box h4');
+			}else{
+				break;
+			}
+		}
+		$html->clear();
+		echo $openid.'';
+	}
+
+	//获取articles
+	//这里需要保存：微信号，容文章标题，内容简介，内容
+	public function getXml(){
+		$openid = trim( $_REQUEST['openid'] );
+		$wxid = trim( $_REQUEST['wxid'] );
+		if (!$openid) {
+			echo "no openid";
+			exit();
+		}
+
+		$url = "http://weixin.sogou.com/gzhjs?cb=sogou.weixin.gzhcb&openid=".$openid;
+
+		$json = file_get_html( $url );
+		$json = stripslashes($json);
+
+		preg_match('/\"totalItems\"\:(\d)/', $json, $matches);
+		$itemCount = $matches[1];
+		preg_match('/\"totalPages\"\:(\d)/', $json, $matches);
+		$pageCount = $matches[1];
+
+		if ( intval($itemCount) == 0 ) {
+			echo "该公众号没有发布文章";
+			exit();
+		}
+
+		$tmp = array();
+		$k = 0;
+		for ($j=0; $j < $pageCount; $j++) { 
+			if ($j==0) {
+				preg_match_all("/<url>(.*?)<\/url>/i", $json, $links, PREG_PATTERN_ORDER);
+				preg_match_all("/<content>(.*?)<\/content>/i", $json, $contents, PREG_PATTERN_ORDER);
+				
+				for ($i=0; $i < count($links[1]); $i++) { 
+					$url = ltrim( $links[1][$i], '<![CDATA[' );
+					$url = rtrim( $url, ']]>' );
+
+					$content = ltrim( $contents[1][$i], '<![CDATA[' );
+					$content = rtrim( $content, ']]>' );
+
+					$tmp[$k]['url'] = $url;
+					$tmp[$k]['content'] = $content;
+					$article = $this->getArticle($url);
+
+					$data = array(
+						'wxh'   =>  $wxid,
+						'openId' =>  $openid,
+						'link'	=>	$tmp[$k]['url'],
+						'title'   =>  $article['title'],
+						'summary'  =>  $tmp[$k]['content'],
+						'content'	=>	$article['content']
+					);
+					$this->weixin->_create( $data );
+					echo("save success".$k.'<br>');
+					$k++;
+				}
+			}else{
+				$url = "http://weixin.sogou.com/gzhjs?cb=sogou.weixin.gzhcb&openid=".$openid.'&page='.($j+1);
+				$json = file_get_html( $url );
+				$json = stripslashes($json);
+
+				preg_match_all("/<url>(.*?)<\/url>/i", $json, $links, PREG_PATTERN_ORDER);
+				preg_match_all("/<content>(.*?)<\/content>/i", $json, $contents, PREG_PATTERN_ORDER);
+				
+				for ($i=0; $i < count($links[1]); $i++) { 
+					$url = ltrim( $links[1][$i], '<![CDATA[' );
+					$url = rtrim( $url, ']]>' );
+
+					$content = ltrim( $contents[1][$i], '<![CDATA[' );
+					$content = rtrim( $content, ']]>' );
+
+					
+
+					$tmp[$k]['url'] = $url;
+					$tmp[$k]['content'] = $content;
+					$article = $this->getArticle($tmp[$k]['url']);
+					$data = array(
+						'wxh'   =>  $wxid,
+						'openId' =>  $openid,
+						'link'	=>	$tmp[$k]['url'],
+						'title'   =>  $article['title'],
+						'summary'  =>  $tmp[$k]['content'],
+						'content'	=>	$article['content']
+					);
+					$this->weixin->_create( $data );
+					echo("save success".$k.'<br>');
+					$k++;
+				}
+			}
+		}
+	}
+
+	private function getArticle($tmp_url){
+		$html = file_get_html($tmp_url);
+
+		$title = $html->find('h1#activity-name',0)->outertext;
+		$content = $html->find('div#page-content',0)->outertext;
+		$html->clear();     
+		$article = array(
+			'title' => $title,
+			'content' => $content,
+		);
+		return $article;
+	}
+}

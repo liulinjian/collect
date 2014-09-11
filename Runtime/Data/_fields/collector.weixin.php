@@ -1,0 +1,1 @@
+{"0":"id","1":"wxh","2":"openId","3":"title","4":"summary","5":"content","6":"link","_autoinc":true,"_pk":"id","_type":{"id":"int(11)","wxh":"varchar(50)","openId":"varchar(250)","title":"varchar(250)","summary":"varchar(250)","content":"text","link":"varchar(250)"}}

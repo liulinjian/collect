@@ -1,0 +1,72 @@
+<script src="Tpl/js/jquery1.7.js" type="text/javascript"></script>
+<style type="text/css">
+.mydiv{
+	margin-top: 5px;
+	padding: 5px 10px;
+}
+</style>
+<div style="min-height:540px;margin-bottom:50px;">
+<!--通栏背景-->
+	<!-- content start -->
+	<div style="width:1000px;margin:0 auto;padding:20px;">
+		<div class="mydiv" id="collect_form">  
+			<span> 公众号名称： </span>
+			<input id="wxname" type="text" style="width:500px;" name="wxname">
+		</div>
+		<div class="mydiv" id="collect_result"> 
+			<div class="result_title mydiv">  
+				<span> 微信号： </span> <input type="text" name="title" id="wxid" style="width:500px;">  </input>
+				<button id="submitBtn"> 获取openid </button>
+			</div>
+			<div class="result_content mydiv"> 
+				<span> OpenID： <span id="weixin_openid">  </span></span>
+			</div>
+			<textarea id="content" rows="50" cols="140"> 
+			</textarea>
+		</div>
+	</div>
+
+</div>
+<!--index_li_结束-->
+
+<script type="text/javascript">
+	function test(){
+		var url = './?m=weixin&a=article';
+		var openid = $('#weixin_openid').val().trim();
+		openid = "oIWsFt-NQJJTI1l_HJBI-iEy3qbg";
+		$.post(url, {'openid':openid}, function(res){
+			$('#content').html( res );
+		});
+	}
+	$(document).ready(function(){
+		var path = './?m=weixin&a=openid';
+		$('#submitBtn').click(function(){
+			var wxname = $('#wxname').val().trim();
+			var wxid = $('#wxid').val().trim();
+			$('#article_title').val( '' );
+			if ( wxname == '' || wxname == null ) {
+				return;
+			};
+			if ( wxid == '' || wxid == null ) {
+				return;
+			};
+			$.post(path, {'wxname':wxname, 'wxid':wxid}, function(res){
+				var btn = "<button id='getArticles'>获取文章列表</button>";
+				$('#weixin_openid').html( res +" &nbsp&nbsp&nbsp&nbsp" + btn );
+			});
+		});
+		$('#getArticles').live('click',function(){
+			var url = './?m=weixin&a=article';
+			var openid = $('#weixin_openid').val().trim();
+			openid = "oIWsFtyS0X3NusSPpJXA0ie0dQQc";
+			$.post(url, {'openid':openid}, function(res){
+				alert("fdafdsa");
+				res = $.parseJSON( res );
+				alert( res.totalPages );
+				//$('#content').html( res );
+			});
+		});
+
+		test();
+	});
+</script>

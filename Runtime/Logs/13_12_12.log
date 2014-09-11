@@ -1,0 +1,179 @@
+[ 2013-12-12T15:11:54+08:00 ] 127.0.0.1 /kd/collect/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.030954s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.031095s ]
+SQL: SHOW COLUMNS FROM `kaoder_collect` [ RunTime:0.021181s ]
+SQL: SHOW COLUMNS FROM `kaoder_collect_match` [ RunTime:0.022710s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.299651s ]
+INFO: [ view_template ] --END-- [ RunTime:0.031020s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.330745s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.103743s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.434533s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.443472s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.458664s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.474353s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.050580s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.485212s ]
+INFO: [ view_end ] --END-- [ RunTime:0.017705s ]
+
+[ 2013-12-12T15:12:00+08:00 ] 127.0.0.1 /kd/collect/?r=rules
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002148s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002239s ]
+SQL: SHOW COLUMNS FROM `kaoder_collect` [ RunTime:0.005834s ]
+SQL: SHOW COLUMNS FROM `kaoder_collect_match` [ RunTime:0.005580s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.065269s ]
+INFO: [ view_template ] --END-- [ RunTime:0.003258s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.068581s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024365s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.092991s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.095050s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.097217s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.099261s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.008300s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.101370s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002138s ]
+
+[ 2013-12-12T15:12:04+08:00 ] 127.0.0.1 /kd/collect/?a=rules
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002604s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002727s ]
+SQL: SHOW COLUMNS FROM `kaoder_collect` [ RunTime:0.005689s ]
+SQL: SHOW COLUMNS FROM `kaoder_collect_match` [ RunTime:0.005466s ]
+SQL: SELECT * FROM `kaoder_collect` ORDER BY id ASC  [ RunTime:0.000447s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 1 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000288s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 1 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000331s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 2 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000360s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 2 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000319s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 3 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000349s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 3 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000452s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 4 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000412s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 4 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000348s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 6 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000220s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 6 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000244s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 7 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000239s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 7 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000250s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 8 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000217s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 8 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000344s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 9 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000279s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 9 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000274s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 10 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000242s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 10 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000226s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 11 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000241s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 11 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000239s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 12 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000200s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 12 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000242s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 13 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000243s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 13 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000240s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 14 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000274s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 14 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000249s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 15 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000237s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 15 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000246s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.086134s ]
+INFO: [ view_template ] --END-- [ RunTime:0.003187s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.089366s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.082204s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.171627s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.173787s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.175953s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.178023s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.008842s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.180562s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002468s ]
+
+[ 2013-12-12T15:13:48+08:00 ] 127.0.0.1 /kd/collect/?a=rules
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002568s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002670s ]
+SQL: SHOW COLUMNS FROM `kaoder_collect` [ RunTime:0.006088s ]
+SQL: SHOW COLUMNS FROM `kaoder_collect_match` [ RunTime:0.005808s ]
+SQL: SELECT * FROM `kaoder_collect` ORDER BY id ASC  [ RunTime:0.000545s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 1 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000298s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 1 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000231s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 2 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000283s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 2 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000269s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 3 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.001092s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 3 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000327s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 4 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000325s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 4 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000186s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 6 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000193s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 6 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000188s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 7 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000439s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 7 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000285s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 8 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000330s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 8 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000187s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 9 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000190s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 9 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000185s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 10 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000192s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 10 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000186s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 11 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000185s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 11 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000188s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 12 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000185s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 12 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000237s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 13 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000193s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 13 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000187s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 14 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000219s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 14 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000187s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 15 ) AND ( `type` = 0 ) ORDER BY id asc  [ RunTime:0.000645s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `cid` = 15 ) AND ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.000241s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.086180s ]
+INFO: [ view_template ] --END-- [ RunTime:0.003351s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.089573s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027039s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.116663s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.118682s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.120893s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.122697s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.008159s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.124901s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002239s ]
+
+[ 2013-12-12T23:25:45+08:00 ] 127.0.0.1 /kd/collect/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.031428s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.045853s ]
+SQL: SHOW COLUMNS FROM `kaoder_collect` [ RunTime:0.067674s ]
+SQL: SHOW COLUMNS FROM `kaoder_collect_match` [ RunTime:0.044823s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.559991s ]
+INFO: [ view_template ] --END-- [ RunTime:0.048002s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.608121s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.169922s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.778062s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.787997s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.802562s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.818535s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.051134s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.829296s ]
+INFO: [ view_end ] --END-- [ RunTime:0.017849s ]
+
+[ 2013-12-12T23:25:48+08:00 ] 127.0.0.1 /kd/collect/?a=collect
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000983s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001075s ]
+SQL: SHOW COLUMNS FROM `kaoder_collect` [ RunTime:0.005761s ]
+SQL: SHOW COLUMNS FROM `kaoder_collect_match` [ RunTime:0.005606s ]
+SQL: SHOW COLUMNS FROM `kaoder_collect` [ RunTime:0.005691s ]
+SQL: SELECT * FROM `kaoder_collect` WHERE domain="www.nowamagic.net" LIMIT 1   [ RunTime:0.014091s ]
+SQL: INSERT INTO `kaoder_collect` (`alias`,`domain`) VALUES ('www.nowamagic.net','www.nowamagic.net') [ RunTime:0.023159s ]
+SQL: SELECT * FROM `kaoder_collect_match` WHERE ( `type` = 1 ) ORDER BY id asc  [ RunTime:0.035014s ]
+

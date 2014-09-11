@@ -1,0 +1,84 @@
+<?php
+class WeixinAction extends CommonAction {
+	/*
+		kaoder    采集器
+		version   1.0
+		author    littlebear
+		date      2013/11/19
+		func      根据文章来源url获取文章标题和内容 
+	*/
+
+	function __construct() {
+		parent::__construct();
+	}
+
+	//解析URL主页 http://localhost/kd/?m=weixin
+	public function index(){
+		$this->display('Tpl/wx/index.html');
+	}
+
+	//获取openId
+
+
+	//获取articles
+	//这里需要保存：微信号，容文章标题，内容简介，内容
+	public function article(){
+		$openid = trim( $_REQUEST['openid'] );
+		if (!$openid) {
+			echo "没有openid";
+			exit();
+		}
+
+		$url = "http://weixin.sogou.com/gzhjs?cb=sogou.weixin.gzhcb&openid=".$openid;
+
+		$json = file_get_html( $url );
+		$json = stripslashes($json);
+
+		preg_match('/\"totalItems\"\:(\d)/', $json, $matches);
+		$itemCount = $matches[1];
+		preg_match('/\"totalPages\"\:(\d)/', $json, $matches);
+		$pageCount = $matches[1];
+
+		$tmp = array();
+		$k = 0;
+		for ($j=0; $j < 3; $j++) { 
+			if ($j==0) {
+				preg_match_all("/<url>(.*?)<\/url>/i", $json, $links, PREG_PATTERN_ORDER);
+				preg_match_all("/<content>(.*?)<\/content>/i", $json, $contents, PREG_PATTERN_ORDER);
+				
+				for ($i=0; $i < count($links[1]); $i++) { 
+					$url = ltrim( $links[1][$i], '<![CDATA[' );
+					$url = rtrim( $url, ']]>' );
+
+					$content = ltrim( $contents[1][$i], '<![CDATA[' );
+					$content = rtrim( $content, ']]>' );
+
+					$tmp[$k]['url'] = $url;
+					$tmp[$k]['content'] = $content;
+					$k++;
+				}
+			}else{
+				$url = "http://weixin.sogou.com/gzhjs?cb=sogou.weixin.gzhcb&openid=".$openid.'&page='.($i+1);
+				$json = file_get_html( $url );
+				$json = stripslashes($json);
+
+				preg_match_all("/<url>(.*?)<\/url>/i", $json, $links, PREG_PATTERN_ORDER);
+				preg_match_all("/<content>(.*?)<\/content>/i", $json, $contents, PREG_PATTERN_ORDER);
+				
+				for ($i=0; $i < count($links[1]); $i++) { 
+					$url = ltrim( $links[1][$i], '<![CDATA[' );
+					$url = rtrim( $url, ']]>' );
+
+					$content = ltrim( $contents[1][$i], '<![CDATA[' );
+					$content = rtrim( $content, ']]>' );
+
+					$tmp[$k]['url'] = $url;
+					$tmp[$k]['content'] = $content;
+					$k++;
+				}
+			}
+		}
+		
+		print_r( $tmp );
+	}
+}

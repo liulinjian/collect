@@ -1,0 +1,23 @@
+[ 2014-09-11T13:32:14+08:00 ] 127.0.0.1 /collect/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.017533s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.017667s ]
+SQL: SHOW COLUMNS FROM `kaoder_collect` [ RunTime:0.212107s ]
+SQL: SHOW COLUMNS FROM `kaoder_collect_match` [ RunTime:0.026344s ]
+SQL: SHOW COLUMNS FROM `kaoder_weixin` [ RunTime:0.069947s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-1.604868s ]
+INFO: [ view_template ] --END-- [ RunTime:0.028335s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-1.633262s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.241982s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-1.875331s ]
+INFO: Run TokenBuild Behavior [ RunTime:-1.877498s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-1.879113s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-1.880922s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007256s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-1.882707s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002234s ]
+

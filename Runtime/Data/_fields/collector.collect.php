@@ -1,0 +1,1 @@
+{"0":"id","1":"domain","2":"alias","_autoinc":true,"_pk":"id","_type":{"id":"int(11)","domain":"varchar(255)","alias":"varchar(255)"}}

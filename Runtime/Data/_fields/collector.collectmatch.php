@@ -1,0 +1,1 @@
+{"0":"id","1":"cid","2":"match","3":"pos","4":"type","_autoinc":true,"_pk":"id","_type":{"id":"int(11)","cid":"int(11)","match":"varchar(255)","pos":"int(2)","type":"tinyint(1)"}}
